@@ -6,21 +6,23 @@ import { FigmaFolderStarIcon } from "@/components/FigmaIcons";
 export default function ClubIntroAnimation() {
   const [phase, setPhase] = useState<"opening" | "bursting" | "fading" | "done">("opening");
 
+  const dismiss = () => setPhase("done");
+
   useEffect(() => {
-    // 1. Folder opens (after 300ms)
+    // 1. Folder opens (after 250ms)
     const t1 = setTimeout(() => {
       setPhase("bursting");
-    }, 350);
+    }, 250);
 
-    // 2. Bursting elements fly out (after 900ms)
+    // 2. Bursting elements fly out (after 700ms)
     const t2 = setTimeout(() => {
       setPhase("fading");
-    }, 1100);
+    }, 700);
 
-    // 3. Smooth fade out and unmount (after 1450ms)
+    // 3. Smooth unmount (after 1100ms)
     const t3 = setTimeout(() => {
       setPhase("done");
-    }, 1500);
+    }, 1150);
 
     return () => {
       clearTimeout(t1);
@@ -33,12 +35,16 @@ export default function ClubIntroAnimation() {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-[#FDF8F5] transition-opacity duration-500 pointer-events-none select-none ${
-        phase === "fading" ? "opacity-0 scale-105" : "opacity-100 scale-100"
-      }`}
+      onClick={dismiss}
+      onTouchStart={dismiss}
+      style={{
+        animation: "introOverlayFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+      }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#FEF9F6] pointer-events-auto select-none cursor-pointer"
     >
       {/* Background ambient radial glow */}
-      <div className="absolute w-[480px] h-[480px] rounded-full bg-[#FFE25F]/30 blur-3xl animate-pulse"></div>
+      <div className="absolute w-[450px] h-[450px] rounded-full bg-[#FFE25F]/30 blur-3xl animate-pulse pointer-events-none"></div>
+
 
       {/* Center animation container */}
       <div className="relative flex flex-col items-center justify-center text-center">
