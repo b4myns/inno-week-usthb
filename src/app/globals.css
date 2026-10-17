@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-canvas: #FEF9F6;
+    --brand-orange: #F15A23;
+    --brand-orange-hover: #D84A16;
+    --brand-yellow: #FCDF5D;
+    --brand-blue: #10459A;
+    --charcoal-ink: #32303F;
+    --text-muted: #606060;
+    --card-white: #FFFFFF;
+    --surface-light: #F2F2F2;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--charcoal-ink);
+    font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-space-grotesk), -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.03em;
+  }
+}
+
+.font-heading {
+  font-family: var(--font-space-grotesk), sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.font-body {
+  font-family: var(--font-manrope), sans-serif;
+}
+
+/* 24px Architectural Dot Grid */
+.bg-dot-grid {
+  background-image: radial-gradient(#32303F 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: center;
+}
+
+/* Hard Offset Tactile Shadows */
+.shadow-swiss {
+  box-shadow: 4px 4px 0px #32303F;
+}
+
+.shadow-swiss-lg {
+  box-shadow: 6px 6px 0px #32303F;
+}
+
+.shadow-swiss-sm {
+  box-shadow: 2px 2px 0px #32303F;
+}
