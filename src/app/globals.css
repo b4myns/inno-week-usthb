@@ -55,22 +55,3 @@
   box-shadow: 2px 2px 0px #32303F;
 }
 
-/* Fail-safe Pure CSS Keyframe for Intro Animation */
-@keyframes introOverlayFade {
-  0% {
-    opacity: 1;
-    visibility: visible;
-  }
-  60% {
-    opacity: 1;
-  }
-  85% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-}
-
