@@ -17,6 +17,7 @@ import CountdownClock from "@/components/CountdownClock";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import MetricsCards from "@/components/MetricsCards";
 import ClubIntroAnimation from "@/components/ClubIntroAnimation";
+import ProgramTree from "@/components/ProgramTree";
 import { MapPin, Calendar, Clock, ArrowUpRight } from "lucide-react";
 
 export default function Home() {
@@ -253,217 +254,31 @@ export default function Home() {
 
 
       {/* ====================================================================
-          4. SECTION 02: THE 5 WORKSHOPS BENTO GRID
+          4. SECTION 02: THE 5 WORKSHOPS TREE ROADMAP
           ==================================================================== */}
       <section id="ateliers" className="max-w-[1200px] mx-auto px-6 py-20">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <div className="inline-block px-3 py-1 rounded-full bg-[#FFFFFF] border-[1.5px] border-[#32303F] text-[11px] font-heading uppercase tracking-wider text-[#F15A23] font-bold mb-3 shadow-swiss-sm">
-              PARCOURS PÉDAGOGIQUE
+              PARCOURS PÉDAGOGIQUE • ÉDITION 2026
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-[#32303F] tracking-tight font-heading">
-              LES 5 ATELIERS FONDAMENTAUX
+              L&apos;ARBRE DES 5 ATELIERS
             </h2>
             <p className="text-xs sm:text-sm text-[#606060] mt-2 max-w-xl font-medium">
-              De l&apos;esquisse sur tableau blanc jusqu&apos;au pitch devant des investisseurs, une progression méthodique sur cinq demi-journées pratiques.
+              Une progression ergonomique et aérée étape par étape. Chaque atelier produit un livrable concret pour emmener votre idée scientifique ou tech jusqu&apos;au Demo Day.
             </p>
           </div>
           <div className="bg-[#FFFFFF] border-[1.5px] border-[#32303F] px-4 py-2 rounded-full text-xs font-heading font-bold text-[#32303F] shadow-swiss-sm shrink-0">
-            Accès : <span className="text-[#F15A23]">Sur inscription préalable</span>
+            Accès : <span className="text-[#F15A23]">Gratuit sur inscription</span>
           </div>
         </div>
 
-        {/* 3 + 2 Bento Grid */}
-        <div className="space-y-6">
-          {/* Row 1: 3 Workshops Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Workshop 01 */}
-            <OSWindowCard title="ATELIER 01">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between text-xs font-heading font-bold">
-                  <span className="bg-[#FCDF5D] px-2.5 py-0.5 rounded-full border border-[#32303F]">
-                    JOUR 01 • LUNDI
-                  </span>
-                  <span className="flex items-center gap-1 text-[#606060]">
-                    <Clock className="w-3.5 h-3.5 text-[#F15A23]" /> 09:30 - 13:00
-                  </span>
-                </div>
-                <h3 className="font-heading font-bold text-lg text-[#32303F] leading-snug">
-                  01. De l&apos;idée au modèle économique
-                </h3>
-                <p className="text-xs text-[#606060] leading-relaxed line-clamp-2">
-                  Cadrer son intuition technique, identifier une douleur client vérifiable et formuler une proposition de valeur monétisable.
-                </p>
-                <div className="flex items-center gap-1.5 text-xs text-[#606060] font-medium">
-                  <MapPin className="w-3.5 h-3.5 text-[#F15A23]" /> Salle Conférence I, USTHB
-                </div>
-                {/* Trainer Card */}
-                <div className="bg-[#F2F2F2] rounded-xl p-3 flex items-center gap-3 border border-[#32303F]/20">
-                  <VectorSelectionBox className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-[#FFFFFF] flex items-center justify-center font-heading font-black text-xs text-[#F15A23]">
-                    KB
-                  </VectorSelectionBox>
-                  <div className="truncate">
-                    <p className="font-heading font-bold text-xs text-[#32303F] truncate">Dr. K. Benali</p>
-                    <p className="text-[10px] text-[#606060] truncate">Expert Business Models &amp; Enseignant</p>
-                  </div>
-                </div>
-              </div>
-            </OSWindowCard>
-
-            {/* Workshop 02 */}
-            <OSWindowCard title="ATELIER 02">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between text-xs font-heading font-bold">
-                  <span className="bg-[#FCDF5D] px-2.5 py-0.5 rounded-full border border-[#32303F]">
-                    JOUR 02 • MARDI
-                  </span>
-                  <span className="flex items-center gap-1 text-[#606060]">
-                    <Clock className="w-3.5 h-3.5 text-[#F15A23]" /> 09:30 - 13:00
-                  </span>
-                </div>
-                <h3 className="font-heading font-bold text-lg text-[#32303F] leading-snug">
-                  02. Du lancement à la validation
-                </h3>
-                <p className="text-xs text-[#606060] leading-relaxed line-clamp-2">
-                  Construire un prototype fonctionnel sans coder pendant six mois. Réaliser des interviews clients et tester la pré-commande.
-                </p>
-                <div className="flex items-center gap-1.5 text-xs text-[#606060] font-medium">
-                  <MapPin className="w-3.5 h-3.5 text-[#F15A23]" /> Open Espace Découverte, USTHB
-                </div>
-                {/* Trainer Card */}
-                <div className="bg-[#F2F2F2] rounded-xl p-3 flex items-center gap-3 border border-[#32303F]/20">
-                  <VectorSelectionBox className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-[#FFFFFF] flex items-center justify-center font-heading font-black text-xs text-[#F15A23]">
-                    OM
-                  </VectorSelectionBox>
-                  <div className="truncate">
-                    <p className="font-heading font-bold text-xs text-[#32303F] truncate">O. Mansouri</p>
-                    <p className="text-[10px] text-[#606060] truncate">Product Lead &amp; Co-fondateur SaaS</p>
-                  </div>
-                </div>
-              </div>
-            </OSWindowCard>
-
-            {/* Workshop 03 */}
-            <OSWindowCard title="ATELIER 03">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between text-xs font-heading font-bold">
-                  <span className="bg-[#FCDF5D] px-2.5 py-0.5 rounded-full border border-[#32303F]">
-                    JOUR 03 • MERCREDI
-                  </span>
-                  <span className="flex items-center gap-1 text-[#606060]">
-                    <Clock className="w-3.5 h-3.5 text-[#F15A23]" /> 09:30 - 13:00
-                  </span>
-                </div>
-                <h3 className="font-heading font-bold text-lg text-[#32303F] leading-snug">
-                  03. De la rentabilité au financement
-                </h3>
-                <p className="text-xs text-[#606060] leading-relaxed line-clamp-2">
-                  Calculer son coût d&apos;acquisition (CAC), ses marges brutes, et bâtir une structure financière tenable avant la levée de fonds.
-                </p>
-                <div className="flex items-center gap-1.5 text-xs text-[#606060] font-medium">
-                  <MapPin className="w-3.5 h-3.5 text-[#F15A23]" /> Salle Conférence I, USTHB
-                </div>
-                {/* Trainer Card */}
-                <div className="bg-[#F2F2F2] rounded-xl p-3 flex items-center gap-3 border border-[#32303F]/20">
-                  <VectorSelectionBox className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-[#FFFFFF] flex items-center justify-center font-heading font-black text-xs text-[#F15A23]">
-                    SZ
-                  </VectorSelectionBox>
-                  <div className="truncate">
-                    <p className="font-heading font-bold text-xs text-[#32303F] truncate">S. Zerrouki</p>
-                    <p className="text-[10px] text-[#606060] truncate">VC &amp; Angel Investor Maghreb</p>
-                  </div>
-                </div>
-              </div>
-            </OSWindowCard>
-          </div>
-
-          {/* Row 2: 2 Workshops Bento (4 cols + 8 cols) */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-            {/* Workshop 04 (4 cols) */}
-            <div className="md:col-span-5">
-              <OSWindowCard title="ATELIER 04">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between text-xs font-heading font-bold">
-                    <span className="bg-[#FCDF5D] px-2.5 py-0.5 rounded-full border border-[#32303F]">
-                      JOUR 04 • JEUDI
-                    </span>
-                    <span className="flex items-center gap-1 text-[#606060]">
-                      <Clock className="w-3.5 h-3.5 text-[#F15A23]" /> 09:30 - 13:00
-                    </span>
-                  </div>
-                  <h3 className="font-heading font-bold text-lg text-[#32303F] leading-snug">
-                    04. Des ressources financières à la sécurisation du projet
-                  </h3>
-                  <p className="text-xs text-[#606060] leading-relaxed">
-                    Obtention du Label Startup en Algérie, protection des brevets avec l&apos;INAPI et accès aux financements publics ASF.
-                  </p>
-                  <div className="flex items-center gap-1.5 text-xs text-[#606060] font-medium">
-                    <MapPin className="w-3.5 h-3.5 text-[#F15A23]" /> Espace Startup Hub, USTHB
-                  </div>
-                  <div className="bg-[#F2F2F2] rounded-xl p-3 flex items-center gap-3 border border-[#32303F]/20">
-                    <VectorSelectionBox className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-[#FFFFFF] flex items-center justify-center font-heading font-black text-xs text-[#F15A23]">
-                      MH
-                    </VectorSelectionBox>
-                    <div className="truncate">
-                      <p className="font-heading font-bold text-xs text-[#32303F] truncate">M. Haddad</p>
-                      <p className="text-[10px] text-[#606060] truncate">Consultant Juridique &amp; Brevets INAPI</p>
-                    </div>
-                  </div>
-                </div>
-              </OSWindowCard>
-            </div>
-
-            {/* Workshop 05 — GRAND FINALE (8 cols) */}
-            <div className="md:col-span-7">
-              <OSWindowCard
-                title="ATELIER 05 — CLÔTURE & PITCH"
-                headerAction={
-                  <span className="bg-[#FCDF5D] text-[#32303F] text-[10px] font-heading font-black px-2.5 py-0.5 rounded-full border border-[#32303F]">
-                    DEMO DAY LIVE
-                  </span>
-                }
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
-                  <div className="sm:col-span-7 space-y-4">
-                    <div className="flex items-center gap-2 text-xs font-heading font-bold">
-                      <span className="bg-[#F15A23] text-white px-2.5 py-0.5 rounded-full border border-[#32303F]">
-                        JOUR 05 • VENDREDI
-                      </span>
-                      <span className="text-[#606060]">14:00 - 18:30</span>
-                    </div>
-                    <h3 className="font-heading font-black text-xl text-[#32303F] leading-tight">
-                      05. Du pitch à la croissance
-                    </h3>
-                    <p className="text-xs text-[#606060] leading-relaxed">
-                      La conclusion électrique d&apos;Inno-Week : entraînement intensif au format Pitch 3 minutes (méthode Y-Combinator) suivi d&apos;un Demo Day en direct sur scène devant un jury mixte d&apos;accélérateurs et business angels.
-                    </p>
-                    <div className="flex items-center gap-1.5 text-xs text-[#606060] font-medium">
-                      <MapPin className="w-3.5 h-3.5 text-[#F15A23]" /> Grand Auditorium Houari Boumediene, USTHB
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-5 bg-[#F2F2F2] rounded-2xl p-5 border border-[#32303F]/20 text-center space-y-3">
-                    <VectorSelectionBox className="w-14 h-14 mx-auto rounded-xl overflow-hidden bg-white flex items-center justify-center font-heading font-black text-sm text-[#F15A23]">
-                      LA
-                    </VectorSelectionBox>
-                    <div>
-                      <p className="font-heading font-bold text-xs text-[#32303F]">L. Ait-Amir</p>
-                      <p className="text-[10px] text-[#606060]">Pitch Coach &amp; Investisseur</p>
-                    </div>
-                    <Link
-                      href="/register"
-                      className="inline-block w-full py-2.5 bg-[#F15A23] hover:bg-[#D84A16] text-white font-heading font-bold text-xs rounded-full border-[1.5px] border-[#32303F] shadow-swiss-sm transition active:scale-95"
-                    >
-                      Réserver ma place →
-                    </Link>
-                  </div>
-                </div>
-              </OSWindowCard>
-            </div>
-          </div>
-        </div>
+        {/* Eye-Comfort Tree Component */}
+        <ProgramTree />
       </section>
+
 
       {/* ====================================================================
           5. SECTION 03: INTERACTIVE FAQ ACCORDION
