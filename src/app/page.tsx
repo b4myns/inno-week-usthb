@@ -17,11 +17,15 @@ import CountdownClock from "@/components/CountdownClock";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import MetricsCards from "@/components/MetricsCards";
 import ProgramTree from "@/components/ProgramTree";
+import ClubIntroAnimation from "@/components/ClubIntroAnimation";
 import { MapPin, Calendar, Clock, ArrowUpRight } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#FEF9F6] text-[#32303F] relative overflow-x-clip font-body selection:bg-[#FCDF5D] selection:text-[#32303F]">
+      {/* Interactive 3D Folder Opening Intro Animation */}
+      <ClubIntroAnimation />
+
       {/* 24px Architectural Dot Grid Overlay */}
 
       <div className="absolute inset-0 bg-dot-grid opacity-[0.12] pointer-events-none -z-10"></div>

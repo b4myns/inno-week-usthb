@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -239,7 +239,7 @@ export function GlowingLampGraphic({ className = "w-12 h-12" }: { className?: st
   );
 }
 
-// C. Folder Badge with Retro Cursor Pointer Click
+// C. Folder Badge with Retro Cursor Pointer Click & Opening Interaction
 export function FolderBadge({
   title,
   subtitle,
@@ -251,16 +251,33 @@ export function FolderBadge({
   tag?: string;
   rotate?: number;
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <motion.div
+      onHoverStart={() => setIsOpen(true)}
+      onHoverEnd={() => setIsOpen(false)}
+      onClick={() => setIsOpen((prev) => !prev)}
       whileHover={{ scale: 1.05, rotate: 0 }}
+      whileTap={{ scale: 0.96 }}
       animate={{ rotate }}
       transition={{ duration: 0.2 }}
-      className="relative bg-white border-[1.5px] border-[#32303F] rounded-2xl p-3 shadow-swiss flex items-center gap-3 select-none"
+      className="relative bg-white border-[1.5px] border-[#32303F] rounded-2xl p-3 shadow-swiss flex items-center gap-3 select-none cursor-pointer group"
     >
-      {/* Orange Folder Icon */}
-      <div className="w-10 h-10 rounded-xl bg-[#F15A23]/10 border border-[#F15A23]/30 flex items-center justify-center shrink-0">
-        <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
+      {/* Orange Folder Icon with animated document peek */}
+      <div className="relative w-10 h-10 rounded-xl bg-[#F15A23]/10 border border-[#F15A23]/30 flex items-center justify-center shrink-0">
+        {/* Document sliding up when folder is opened */}
+        <motion.div
+          animate={isOpen ? { y: -8, opacity: 1, scale: 1.05 } : { y: 0, opacity: 0, scale: 0.8 }}
+          transition={{ type: "spring", stiffness: 350, damping: 20 }}
+          className="absolute -top-1 w-5 h-4 bg-white border border-[#32303F] rounded-[3px] shadow-2xs z-10 flex flex-col justify-center items-center pointer-events-none"
+        >
+          <div className="w-3 h-0.5 bg-[#F15A23] rounded-full mb-0.5"></div>
+          <div className="w-2 h-0.5 bg-[#FCDF5D] rounded-full"></div>
+        </motion.div>
+
+        {/* Folder Base */}
+        <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 z-20">
           <path
             d="M3 6C3 4.895 3.895 4 5 4H10L12 6H19C20.105 6 21 6.895 21 8V18C21 19.105 20.105 20 19 20H5C3.895 20 3 19.105 3 18V6Z"
             fill="#F15A23"
