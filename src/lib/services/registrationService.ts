@@ -42,12 +42,18 @@ export async function getAllRegistrations(): Promise<CandidateRecord[]> {
   }
 }
 
-// Forward candidate record to Google Sheets webhook if configured
+// Forward candidate record to Google Sheets webhook for organizers review
 async function forwardToGoogleSheets(record: CandidateRecord): Promise<void> {
   const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
-  if (!webhookUrl) return;
+  if (!webhookUrl) {
+    console.log("ℹ️ [GOOGLE_SHEETS] GOOGLE_SHEET_WEBHOOK_URL non configuré. Enregistrement local uniquement.");
+    return;
+  }
 
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+
     const payload = {
       id: record.id,
       date: new Date(record.createdAt).toLocaleString("fr-FR", { timeZone: "Africa/Algiers" }),
@@ -61,6 +67,9 @@ async function forwardToGoogleSheets(record: CandidateRecord): Promise<void> {
       ateliers_choisis: record.formations.join(" | "),
       motivation: record.motivation,
       source: record.source,
+      statut_examen: "EN ATTENTE D'EXAMEN",
+      decision_organisateur: "EN ATTENTE",
+      email_envoye: "NON",
       ip: record.ipAddress || "N/A",
     };
 
@@ -68,13 +77,18 @@ async function forwardToGoogleSheets(record: CandidateRecord): Promise<void> {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
+      signal: controller.signal,
     });
 
+    clearTimeout(timeoutId);
+
     if (!response.ok) {
-      console.warn(`Google Sheets webhook responded with status ${response.status}`);
+      console.warn(`⚠️ Google Sheets webhook a répondu avec le statut : ${response.status}`);
+    } else {
+      console.log(`✅ [GOOGLE_SHEETS] Candidature ${record.id} transmise avec succès au Google Sheet.`);
     }
   } catch (error) {
-    console.error("Failed to forward registration to Google Sheets:", error);
+    console.error("❌ Erreur lors de l'envoi vers Google Sheets :", error);
   }
 }
 
@@ -106,8 +120,8 @@ export async function saveCandidateRegistration(
   // Write updated list atomically
   await fs.writeFile(REGISTRATIONS_FILE, JSON.stringify(registrations, null, 2), "utf-8");
 
-  // Non-blocking forwarding to external Google Sheet if configured
-  forwardToGoogleSheets(newRecord).catch((err) =>
+  // Forward to external Google Sheet if configured
+  await forwardToGoogleSheets(newRecord).catch((err) =>
     console.error("Async Google Sheets hook error:", err)
   );
 

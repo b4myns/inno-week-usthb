@@ -10,7 +10,7 @@ import {
   GlowingLampGraphic,
   DirectionalArrow,
 } from "@/components/ClubVisuals";
-import { CheckCircle2, ArrowLeft, Sparkles, Building, UserCheck } from "lucide-react";
+import { CheckCircle2, ArrowLeft, Sparkles, Building, UserCheck, Mail } from "lucide-react";
 
 interface FormData {
   nom: string;
@@ -242,17 +242,17 @@ export default function RegisterPage() {
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <OSWindowCard
-              title="CONFIRMATION // CANDIDATURE VALIDÉE"
+              title="DOSSIER TRANSMIS // EN COURS D'EXAMEN"
               headerAction={
                 <span className="bg-[#FCDF5D] text-[#32303F] text-[10px] font-heading font-black px-2.5 py-0.5 rounded-full border border-[#32303F]">
-                  STATUT : ENREGISTRÉ
+                  STATUT : EN ATTENTE D&apos;EXAMEN
                 </span>
               }
             >
               <div className="text-center py-6 px-2 sm:px-6 space-y-6">
-                {/* Launching Rocket Graphic */}
+                {/* Mail Box Graphic */}
                 <div className="w-20 h-20 mx-auto rounded-full bg-[#FCDF5D] border-[1.5px] border-[#32303F] flex items-center justify-center shadow-swiss">
-                  <span className="text-4xl">🚀</span>
+                  <span className="text-4xl">📬</span>
                 </div>
 
                 <div className="space-y-2">
@@ -261,13 +261,38 @@ export default function RegisterPage() {
                     INNO-WEEK 2026 • USTHB
                   </div>
                   <h1 className="text-3xl sm:text-4xl font-black font-heading text-[#32303F] tracking-tight">
-                    Candidature Envoyée !
+                    Candidature Transmise !
                   </h1>
                   <p className="text-sm text-[#606060] max-w-lg mx-auto leading-relaxed font-medium">
-                    Félicitations <strong className="text-[#F15A23] font-bold">{formData.prenom} {formData.nom}</strong> !
-                    Ta demande d&apos;inscription pour le bootcamp Inno-Week a bien été prise en compte par le{" "}
+                    Merci <strong className="text-[#F15A23] font-bold">{formData.prenom} {formData.nom}</strong> !
+                    Votre dossier pour le bootcamp Inno-Week a bien été enregistré et transmis au comité de sélection du{" "}
                     <strong>Project Initiative Club</strong>.
                   </p>
+                </div>
+
+                {/* Organizer Review & Email Response Notice Box */}
+                <div className="bg-white border-[1.5px] border-[#32303F] rounded-2xl p-5 text-left space-y-3 shadow-swiss-sm">
+                  <div className="flex items-center gap-2 text-xs font-heading font-black text-[#F15A23] uppercase">
+                    <Mail className="w-4 h-4 text-[#F15A23]" />
+                    <span>Processus de sélection &amp; Réponse par e-mail</span>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-[#32303F] leading-relaxed font-medium">
+                    L&apos;équipe organisatrice du club PIC va examiner votre profil et vos motivations.
+                    La décision officielle ainsi que votre convocation pour les ateliers à l&apos;USTHB vous seront envoyées directement par <strong>e-mail</strong> à :
+                  </p>
+
+                  <div className="inline-flex items-center gap-2 bg-[#FEF9F6] border border-[#32303F] rounded-xl px-3.5 py-2 text-xs font-mono font-bold text-[#10459A]">
+                    <Mail className="w-3.5 h-3.5 text-[#F15A23]" />
+                    <span>{formData.email}</span>
+                  </div>
+
+                  <div className="flex items-start gap-2 bg-[#F2F2F2] rounded-xl p-3 border border-[#32303F]/15 text-xs text-[#606060]">
+                    <span className="text-base shrink-0">💡</span>
+                    <p className="leading-relaxed">
+                      <strong>Note aux candidats :</strong> Aucun badge ni QR code n&apos;est requis. Conservez votre référence <strong>#{candidateId}</strong> pour toute correspondance. Surveillez vos e-mails (y compris vos courriers indésirables / spams).
+                    </p>
+                  </div>
                 </div>
 
                 {/* Candidate Summary Box */}
