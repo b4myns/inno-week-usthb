@@ -85,6 +85,8 @@ export default function RegisterPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [candidateId, setCandidateId] = useState<string>("INNO-2026");
+  const [serverError, setServerError] = useState<string>("");
 
   const toggleFormation = (title: string) => {
     setFormData((prev) => {
@@ -150,9 +152,10 @@ export default function RegisterPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Pure frontend submission simulation
-  const handleSubmit = (e: React.FormEvent) => {
+  // Real backend submission to /api/register
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setServerError("");
 
     if (!validateForm()) {
       window.scrollTo({ top: 180, behavior: "smooth" });
@@ -161,12 +164,38 @@ export default function RegisterPage() {
 
     setIsSubmitting(true);
 
-    // Simulate smooth processing
-    setTimeout(() => {
+    try {
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setCandidateId(data.candidateId);
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        setIsSubmitting(false);
+        if (data.errors) {
+          setErrors(data.errors);
+        }
+        setServerError(
+          data.message || "Une erreur est survenue lors de l'enregistrement de votre candidature."
+        );
+        window.scrollTo({ top: 220, behavior: "smooth" });
+      }
+    } catch (err) {
+      console.error("Erreur soumission formulaire:", err);
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 500);
+      setServerError(
+        "Impossible de communiquer avec le serveur. Vérifiez votre connexion internet."
+      );
+      window.scrollTo({ top: 220, behavior: "smooth" });
+    }
   };
 
   return (
@@ -245,7 +274,7 @@ export default function RegisterPage() {
                 <div className="bg-[#FEF9F6] border-[1.5px] border-[#32303F] rounded-2xl p-5 text-left space-y-3 shadow-swiss-sm">
                   <div className="flex items-center justify-between border-b border-[#32303F]/15 pb-2 text-xs font-heading font-bold text-[#32303F]">
                     <span>RÉCAPITULATIF DU CANDIDAT</span>
-                    <span className="text-[#F15A23]">#INNO-2026</span>
+                    <span className="text-[#F15A23] font-mono font-black text-sm tracking-wide">#{candidateId}</span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
@@ -359,6 +388,19 @@ export default function RegisterPage() {
                 Veuillez compléter les informations ci-dessous. Le nombre de places est limité pour garantir la qualité des ateliers interactifs.
               </p>
             </div>
+
+            {/* Server Error Alert Banner */}
+            {serverError && (
+              <div className="p-4 bg-red-50 border-[1.5px] border-red-500 rounded-xl text-xs text-red-700 font-bold mb-6 flex items-start gap-2.5 shadow-swiss-sm">
+                <span className="text-base shrink-0">⚠️</span>
+                <div>
+                  <p className="font-heading font-black">{serverError}</p>
+                  <p className="text-[11px] font-normal mt-0.5 opacity-90">
+                    Veuillez vérifier les champs indiqués en rouge ci-dessous.
+                  </p>
+                </div>
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Row 1: Nom & Prénom */}
