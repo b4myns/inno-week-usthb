@@ -183,11 +183,16 @@ export default function ProgramTree() {
           {/* Base dashed stroke */}
           <div className="w-full h-full border-l-2 border-dashed border-[#32303F]/35"></div>
 
-          {/* Glowing Animated Pulse traveling down the trunk */}
+          {/* Living Energy Beacon traveling down the trunk */}
           <motion.div
-            animate={{ y: ["0%", "95%", "0%"] }}
+            animate={{ top: ["2%", "94%"] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-0 -left-1 w-3 h-10 rounded-full bg-gradient-to-b from-[#FCDF5D] via-[#F15A23] to-transparent blur-[2px]"
+            className="absolute -left-1.5 w-4 h-16 rounded-full bg-gradient-to-b from-[#FCDF5D] via-[#F15A23] to-[#10459A] blur-[1px] shadow-[0_0_12px_#F15A23]"
+          />
+          <motion.div
+            animate={{ top: ["2%", "94%"] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -left-1 w-3 h-3 rounded-full bg-[#F15A23] border border-white shadow-[0_0_10px_#F15A23]"
           />
         </div>
 
@@ -211,16 +216,23 @@ export default function ProgramTree() {
                   onClick={() => setActiveStep(step.id)}
                 >
                   <motion.div
-                    initial={{ scale: 0.6, opacity: 0 }}
+                    initial={{ scale: 0.9, opacity: 0.85 }}
                     whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true, amount: 0.05 }}
+                    viewport={{ once: true, amount: 0, margin: "100px" }}
                     whileHover={{ scale: 1.15 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileTap={{ scale: 0.92 }}
                     transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                    className={`relative w-12 h-12 rounded-2xl ${step.nodeBg} border-[2px] border-[#32303F] shadow-[3px_3px_0px_#32303F] flex items-center justify-center text-xl transition-shadow ${
-                      isSelected ? "ring-4 ring-[#FCDF5D]" : ""
+                    className={`relative w-12 h-12 rounded-2xl ${step.nodeBg} border-[2px] border-[#32303F] shadow-[3px_3px_0px_#32303F] flex items-center justify-center text-xl transition-all duration-300 ${
+                      isSelected
+                        ? "ring-4 ring-[#FCDF5D] scale-110 shadow-[0_0_18px_rgba(241,90,35,0.45)]"
+                        : "hover:scale-105"
                     }`}
                   >
+                    {/* Active pulse ring */}
+                    {isSelected && (
+                      <span className="absolute -inset-1.5 rounded-2xl border-2 border-[#F15A23] animate-ping opacity-60 pointer-events-none"></span>
+                    )}
+
                     <span>{step.icon}</span>
 
                     {/* Step badge */}
@@ -228,6 +240,8 @@ export default function ProgramTree() {
                       className={`absolute -bottom-2 -right-2 text-[9px] font-mono font-black px-1.5 py-0.2 rounded-full border border-[#32303F] ${
                         isFinale
                           ? "bg-[#FCDF5D] text-[#32303F]"
+                          : isSelected
+                          ? "bg-[#F15A23] text-white"
                           : "bg-white text-[#32303F]"
                       }`}
                     >
@@ -239,27 +253,37 @@ export default function ProgramTree() {
                 {/* 2. Branch Connector (Horizontal branch linking Trunk to Card) */}
                 {/* Desktop Connector */}
                 <div
-                  className={`hidden md:block absolute top-10 ${
+                  className={`hidden md:block absolute top-10 transition-colors duration-300 ${
                     isEven
-                      ? "right-1/2 w-12 border-t-2 border-dashed border-[#32303F]/40"
-                      : "left-1/2 w-12 border-t-2 border-dashed border-[#32303F]/40"
+                      ? "right-1/2 w-12 border-t-2"
+                      : "left-1/2 w-12 border-t-2"
+                  } ${
+                    isSelected
+                      ? "border-[#F15A23] border-solid"
+                      : "border-[#32303F]/40 border-dashed"
                   }`}
                 ></div>
 
                 {/* Mobile Connector */}
-                <div className="block md:hidden absolute left-6 top-10 w-8 border-t-2 border-dashed border-[#32303F]/40 pointer-events-none"></div>
+                <div
+                  className={`block md:hidden absolute left-6 top-10 w-8 border-t-2 transition-colors duration-300 pointer-events-none ${
+                    isSelected
+                      ? "border-[#F15A23] border-solid"
+                      : "border-[#32303F]/40 border-dashed"
+                  }`}
+                ></div>
 
                 {/* 3. Eye-Comfort Card Container */}
                 <div className="w-full md:w-[calc(50%-3rem)]">
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0.85, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.05 }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    viewport={{ once: true, amount: 0, margin: "100px" }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
                     onClick={() => setActiveStep(step.id)}
                     className={`relative rounded-2xl bg-white border-[1.5px] border-[#32303F] p-5 sm:p-7 transition-all duration-300 cursor-pointer ${
                       isSelected
-                        ? "shadow-[6px_6px_0px_#32303F] -translate-y-1 ring-2 ring-[#F15A23]/30"
+                        ? "shadow-[6px_6px_0px_#32303F] -translate-y-1 ring-2 ring-[#F15A23]/40 border-[#F15A23]"
                         : "shadow-[4px_4px_0px_#32303F] hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_#32303F]"
                     }`}
                   >
