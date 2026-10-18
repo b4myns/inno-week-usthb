@@ -170,7 +170,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FEF9F6] text-[#32303F] py-8 px-4 sm:px-6 relative overflow-hidden font-body selection:bg-[#FCDF5D] selection:text-[#32303F]">
+    <div className="min-h-screen bg-[#FEF9F6] text-[#32303F] py-8 px-4 sm:px-6 relative overflow-x-clip font-body selection:bg-[#FCDF5D] selection:text-[#32303F]">
       {/* 24px Architectural Dot Grid Overlay */}
       <div className="absolute inset-0 bg-dot-grid opacity-[0.12] pointer-events-none -z-10"></div>
 
