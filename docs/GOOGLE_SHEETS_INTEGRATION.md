@@ -143,6 +143,10 @@ Créez ou modifiez le fichier `.env.local` à la racine de votre projet :
 GOOGLE_SHEET_WEBHOOK_URL="https://script.google.com/macros/s/VOTRE_ID_ICI/exec"
 ```
 
+Pour la production sur Vercel, ajoutez cette même variable dans **Project Settings → Environment Variables**, avec une portée **Production**, puis redéployez le projet. Cette URL est requise en production : les candidatures y sont enregistrées directement, car le système de fichiers d'une fonction Vercel ne permet pas de conserver des fichiers JSON entre les exécutions. En développement local, le webhook reste facultatif et les inscriptions sont conservées dans `data/registrations.json`.
+
+Le script Apps Script doit être déployé en tant qu'application Web accessible à **Tout le monde** et renvoyer `{ "result": "success" }` après l'ajout de la ligne. Si l'URL manque ou si le webhook refuse une inscription, le site renvoie une erreur au lieu d'afficher une confirmation sans enregistrer la candidature.
+
 Dès qu'un participant soumet son formulaire sur mobile ou PC :
 1. Les vérifications de sécurité et de validité sont appliquées par le backend.
 2. La ligne apparaît instantanément dans votre Google Sheet avec l'état `EN ATTENTE D'EXAMEN`.

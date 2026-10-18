@@ -42,18 +42,25 @@ export async function getAllRegistrations(): Promise<CandidateRecord[]> {
   }
 }
 
-// Forward candidate record to Google Sheets webhook for organizers review
-async function forwardToGoogleSheets(record: CandidateRecord): Promise<void> {
+// Forward candidate record to Google Sheets webhook for organizers review.
+// In production, the sheet is the durable store; failures must fail registration.
+async function forwardToGoogleSheets(
+  record: CandidateRecord,
+  required = false
+): Promise<void> {
   const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
   if (!webhookUrl) {
-    console.log("ℹ️ [GOOGLE_SHEETS] GOOGLE_SHEET_WEBHOOK_URL non configuré. Enregistrement local uniquement.");
+    if (required) {
+      throw new Error("GOOGLE_SHEET_WEBHOOK_URL is required in production.");
+    }
+    console.log("ℹ️ [GOOGLE_SHEETS] GOOGLE_SHEET_WEBHOOK_URL non configuré.");
     return;
   }
 
-  try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 5000);
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 5000);
 
+  try {
     const payload = {
       id: record.id,
       date: new Date(record.createdAt).toLocaleString("fr-FR", { timeZone: "Africa/Algiers" }),
@@ -80,15 +87,23 @@ async function forwardToGoogleSheets(record: CandidateRecord): Promise<void> {
       signal: controller.signal,
     });
 
-    clearTimeout(timeoutId);
-
     if (!response.ok) {
-      console.warn(`⚠️ Google Sheets webhook a répondu avec le statut : ${response.status}`);
-    } else {
-      console.log(`✅ [GOOGLE_SHEETS] Candidature ${record.id} transmise avec succès au Google Sheet.`);
+      throw new Error(`Google Sheets webhook returned HTTP ${response.status}.`);
     }
+
+    const result: unknown = await response.json();
+    if (!result || typeof result !== "object" || (result as { result?: unknown }).result !== "success") {
+      throw new Error("Google Sheets webhook did not confirm the registration.");
+    }
+
+    console.log(`✅ [GOOGLE_SHEETS] Candidature ${record.id} transmise avec succès au Google Sheet.`);
   } catch (error) {
     console.error("❌ Erreur lors de l'envoi vers Google Sheets :", error);
+    if (required) {
+      throw error;
+    }
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
@@ -97,23 +112,29 @@ export async function saveCandidateRegistration(
   input: RegisterInput,
   ipAddress?: string
 ): Promise<CandidateRecord> {
-  await ensureStorageFile();
-
-  const registrations = await getAllRegistrations();
-
-  // Generate unique candidate ID not already present
-  let candidateId = generateCandidateId();
-  while (registrations.some((r) => r.id === candidateId)) {
-    candidateId = generateCandidateId();
-  }
-
+  const isProduction = process.env.NODE_ENV === "production";
   const newRecord: CandidateRecord = {
     ...input,
-    id: candidateId,
+    id: generateCandidateId(),
     createdAt: new Date().toISOString(),
     status: "CONFIRMED",
     ipAddress: ipAddress || "unknown",
   };
+
+  if (isProduction) {
+    // Vercel's deployment filesystem is read-only. Persist production records
+    // directly to the configured Google Apps Script endpoint instead.
+    await forwardToGoogleSheets(newRecord, true);
+    return newRecord;
+  }
+
+  await ensureStorageFile();
+  const registrations = await getAllRegistrations();
+
+  // Generate unique candidate ID not already present in local registrations.
+  while (registrations.some((r) => r.id === newRecord.id)) {
+    newRecord.id = generateCandidateId();
+  }
 
   registrations.push(newRecord);
 
