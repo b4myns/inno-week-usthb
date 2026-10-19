@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { RollingNumber } from "@/components/RollingClockDigit";
 
 interface TimeLeft {
@@ -26,11 +26,13 @@ export default function Countdown({ targetDate }: { targetDate?: string }) {
     seconds: 30,
   });
 
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   useEffect(() => {
-    setIsMounted(true);
-
     const calculateTimeLeft = () => {
       const difference = target.getTime() - new Date().getTime();
 

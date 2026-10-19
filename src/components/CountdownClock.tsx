@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { RollingNumber } from "@/components/RollingClockDigit";
 
@@ -23,10 +23,8 @@ export default function CountdownClock({
     minutes: 38,
     seconds: 30,
   });
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
     const target = new Date(targetDate).getTime();
 
     const updateTimer = () => {

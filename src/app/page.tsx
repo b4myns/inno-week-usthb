@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import {
   DualBrandLogos,
   OSWindowCard,
@@ -18,9 +19,31 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import MetricsCards from "@/components/MetricsCards";
 import ProgramTree from "@/components/ProgramTree";
 import ClubIntroAnimation from "@/components/ClubIntroAnimation";
-import { MapPin, Calendar, Clock, ArrowUpRight } from "lucide-react";
+import { MapPin, Calendar, ArrowUpRight } from "lucide-react";
 
 export default function Home() {
+  const { scrollY } = useScroll();
+  const [isNavVisible, setIsNavVisible] = useState(true);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    const diff = latest - previous;
+
+    // Always visible near the top of the page
+    if (latest <= 60) {
+      setIsNavVisible(true);
+      return;
+    }
+
+    // Scroll down: hide navbar
+    if (diff > 5) {
+      setIsNavVisible(false);
+    } else if (diff < -5) {
+      // Scroll up: reveal navbar
+      setIsNavVisible(true);
+    }
+  });
+
   return (
     <div className="min-h-screen bg-[#FEF9F6] text-[#32303F] relative overflow-x-clip font-body selection:bg-[#FCDF5D] selection:text-[#32303F]">
       {/* Interactive 3D Folder Opening Intro Animation */}
@@ -35,9 +58,18 @@ export default function Home() {
       <div className="absolute top-32 left-0 w-[500px] h-[500px] rounded-full bg-[#F15A23]/12 blur-3xl pointer-events-none -z-10"></div>
 
       {/* ====================================================================
-          1. STICKY FLOATING PILL NAVBAR
+          1. DYNAMIC AUTO-HIDE FLOATING PILL NAVBAR
           ==================================================================== */}
-      <header className="sticky top-4 z-40 w-full max-w-[1200px] mx-auto px-6">
+      <motion.header
+        variants={{
+          visible: { y: 0, opacity: 1 },
+          hidden: { y: -100, opacity: 0 },
+        }}
+        animate={isNavVisible ? "visible" : "hidden"}
+        transition={{ duration: 0.28, ease: "easeInOut" }}
+        className="sticky top-4 z-40 w-full max-w-[1200px] mx-auto px-6"
+        style={{ pointerEvents: isNavVisible ? "auto" : "none" }}
+      >
         <nav className="bg-white/95 backdrop-blur-md border-[1.5px] border-[#32303F] rounded-full px-5 py-3 flex items-center justify-between shadow-swiss">
           {/* Dual Brand Logos */}
           <DualBrandLogos />
@@ -79,7 +111,7 @@ export default function Home() {
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </nav>
-      </header>
+      </motion.header>
 
       {/* ====================================================================
           2. HERO SECTION & CREATIVE LIVE COUNTDOWN CLOCK
@@ -173,7 +205,7 @@ export default function Home() {
             <div className="lg:col-span-6 space-y-6">
               <h2 className="text-3xl sm:text-4xl font-black text-[#32303F] tracking-tight font-heading leading-tight">
                 QUI SOMMES-NOUS ?<br />
-                <span className="text-[#F15A23]">// PROJECT INITIATIVE CLUB</span>
+                <span className="text-[#F15A23]">{"//"} PROJECT INITIATIVE CLUB</span>
               </h2>
 
               <p className="text-sm sm:text-base text-[#606060] leading-relaxed font-body">
@@ -207,7 +239,7 @@ export default function Home() {
                   <div className="relative aspect-4/3 flex flex-col justify-end p-6 text-white group overflow-hidden">
                     {/* Real PIC Community Photo */}
                     <Image
-                      src="/community-pic.png"
+                      src="/community-pic.jpg"
                       alt="Communauté Project Initiative Club USTHB"
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
