@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap");
 @import "tailwindcss";
 
 @layer base {
   :root {
+    --font-space-grotesk: 'Space Grotesk', sans-serif;
+    --font-manrope: 'Manrope', sans-serif;
     --bg-canvas: #FEF9F6;
     --brand-orange: #F15A23;
     --brand-orange-hover: #D84A16;
