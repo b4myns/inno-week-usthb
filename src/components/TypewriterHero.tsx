@@ -37,10 +37,8 @@ export default function TypewriterHero() {
           setDisplayText(currentPhrase.slice(0, displayText.length - 1));
         }, 25);
       } else {
-        timeout = setTimeout(() => {
-          setIsDeleting(false);
-          setPhraseIndex((prev) => (prev + 1) % PHRASES.length);
-        }, 400);
+        setIsDeleting(false);
+        setPhraseIndex((prev) => (prev + 1) % PHRASES.length);
       }
     }
 

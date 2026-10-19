@@ -142,7 +142,7 @@ export default function ProgramTree() {
       {/* Visual Journey Helper Bar */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-10 sm:mb-12 p-2.5 sm:p-3 bg-white/95 backdrop-blur-sm border-[1.5px] border-[#32303F] rounded-full shadow-swiss-sm text-xs select-none">
         <div className="flex items-center gap-2 px-3">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#F15A23]"></span>
+          <span className="w-2.5 h-2.5 rounded-full bg-[#F15A23] animate-pulse"></span>
           <span className="font-heading font-black tracking-wider text-[#32303F] uppercase text-xs">
             Trajectoire Pédagogique
           </span>
@@ -178,8 +178,26 @@ export default function ProgramTree() {
 
       {/* The Central Tree / Spine Road */}
       <div className="relative">
+        {/* Animated Central Trunk Line */}
+        <div className="absolute left-6 md:left-1/2 top-4 bottom-16 w-1 -translate-x-1/2 pointer-events-none z-10">
+          {/* Base dashed stroke */}
+          <div className="w-full h-full border-l-2 border-dashed border-[#32303F]/35"></div>
+
+          {/* Living Energy Beacon traveling down the trunk */}
+          <motion.div
+            animate={{ top: ["2%", "94%"] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -left-1.5 w-4 h-16 rounded-full bg-gradient-to-b from-[#FCDF5D] via-[#F15A23] to-[#10459A] blur-[1px] shadow-[0_0_12px_#F15A23]"
+          />
+          <motion.div
+            animate={{ top: ["2%", "94%"] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -left-1 w-3 h-3 rounded-full bg-[#F15A23] border border-white shadow-[0_0_10px_#F15A23]"
+          />
+        </div>
+
         {/* Tree Nodes List */}
-        <div className="flex flex-col">
+        <div className="space-y-8 sm:space-y-16">
           {WORKSHOP_STEPS.map((step, index) => {
             const isEven = index % 2 === 0;
             const isFinale = index === WORKSHOP_STEPS.length - 1;
@@ -190,18 +208,8 @@ export default function ProgramTree() {
                 key={step.id}
                 className={`relative flex flex-col md:flex-row items-start ${
                   isEven ? "md:flex-row-reverse" : ""
-                } gap-4 sm:gap-6 md:gap-12 pl-14 sm:pl-16 md:pl-0 ${
-                  isFinale ? "" : "pb-8 sm:pb-16"
-                }`}
+                } gap-4 sm:gap-6 md:gap-12 pl-14 sm:pl-16 md:pl-0`}
               >
-                {/* Vertical connecting dashed trunk line (only between milestones 0..3, NEVER on the last one) */}
-                {!isFinale && (
-                  <div
-                    aria-hidden="true"
-                    className="absolute left-6 md:left-1/2 -translate-x-1/2 top-10 -bottom-10 w-0 border-l-2 border-dashed border-[#32303F]/35 pointer-events-none z-10"
-                  />
-                )}
-
                 {/* 1. Milestone Node on the Tree Trunk */}
                 <div
                   className="absolute left-6 md:left-1/2 -translate-x-1/2 top-4 z-20 flex flex-col items-center cursor-pointer"
@@ -220,6 +228,11 @@ export default function ProgramTree() {
                         : "hover:scale-105"
                     }`}
                   >
+                    {/* Active pulse ring */}
+                    {isSelected && (
+                      <span className="absolute -inset-1.5 rounded-2xl border-2 border-[#F15A23] animate-ping opacity-60 pointer-events-none"></span>
+                    )}
+
                     <span>{step.icon}</span>
 
                     {/* Step badge */}
