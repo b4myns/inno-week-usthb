@@ -90,14 +90,8 @@ export default function CommunityPhotoSlider() {
         </div>
       </div>
 
-      {/* Clean Legend & 4 Pillars below the photo */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">
-        <div className="flex items-center gap-2 text-xs font-heading font-bold text-[#606060]">
-          <span className="w-2 h-2 rounded-full bg-[#F15A23] animate-pulse"></span>
-          <span>COMMUNAUTÉ PI • AUDITORIUM USTHB</span>
-        </div>
-
-        {/* 4 Pillars Pill Bar cleanly positioned below */}
+      {/* 4 Pillars Pill Bar cleanly positioned below */}
+      <div className="flex items-center justify-center sm:justify-end pt-1">
         <div className="inline-flex items-center gap-1.5 bg-[#FFFFFF] border-[1.5px] border-[#32303F] rounded-full px-3 py-1 shadow-swiss-sm select-none">
           <span className="bg-[#FCDF5D] text-[#32303F] text-[10px] font-heading font-black px-2.5 py-0.5 rounded-full border border-[#32303F]">
             LEARN

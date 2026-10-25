@@ -4,6 +4,15 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "INNO-WEEK 2026 • USTHB | Project Initiative",
   description: "Série de formations pratiques et entrepreneuriat à l'USTHB organisée par Project Initiative.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
 };
 
 export default function RootLayout({
