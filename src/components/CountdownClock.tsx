@@ -13,12 +13,12 @@ interface TimeLeft {
 }
 
 export default function CountdownClock({
-  targetDate = "2026-11-20T09:00:00",
+  targetDate = "2026-11-08T09:00:00",
 }: {
   targetDate?: string;
 }) {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
-    days: 5,
+    days: 13,
     hours: 14,
     minutes: 38,
     seconds: 30,
@@ -111,12 +111,12 @@ export default function CountdownClock({
 
       {/* Launch Track: Trajectoire de Décollage */}
       <div className="bg-white border-[1.5px] border-[#32303F] rounded-2xl p-4 shadow-swiss-sm">
-        <div className="flex items-center justify-between text-xs font-heading font-bold text-[#32303F] mb-2 px-1">
+        <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-heading font-bold text-[#32303F] mb-2 px-1">
           <span className="flex items-center gap-1.5 text-[#F15A23]">
-            <span>🚀</span> Trajectoire de Décollage Inno-Week
+            <span>🚀</span> Lancement Inno-Week • Dimanche 08 Novembre
           </span>
           <span className="bg-[#FCDF5D] px-2.5 py-0.5 rounded-full border border-[#32303F] text-[10px] tracking-wider uppercase">
-            Décollage Imminent !
+            Coup d&apos;envoi imminent !
           </span>
         </div>
 

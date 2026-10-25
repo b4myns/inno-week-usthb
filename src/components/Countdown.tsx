@@ -10,17 +10,9 @@ interface TimeLeft {
   seconds: number;
 }
 
-export default function Countdown({ targetDate }: { targetDate?: string }) {
-  const [target] = useState<Date>(() => {
-    if (targetDate) return new Date(targetDate);
-    const date = new Date();
-    date.setDate(date.getDate() + 5);
-    date.setHours(14, 38, 30, 0);
-    return date;
-  });
-
+export default function Countdown({ targetDate = "2026-11-08T09:00:00" }: { targetDate?: string }) {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
-    days: 5,
+    days: 13,
     hours: 14,
     minutes: 38,
     seconds: 30,
@@ -33,8 +25,10 @@ export default function Countdown({ targetDate }: { targetDate?: string }) {
   );
 
   useEffect(() => {
+    const target = new Date(targetDate).getTime();
+
     const calculateTimeLeft = () => {
-      const difference = target.getTime() - new Date().getTime();
+      const difference = target - new Date().getTime();
 
       if (difference <= 0) {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -52,7 +46,7 @@ export default function Countdown({ targetDate }: { targetDate?: string }) {
     calculateTimeLeft();
     const interval = setInterval(calculateTimeLeft, 1000);
     return () => clearInterval(interval);
-  }, [target]);
+  }, [targetDate]);
 
   return (
     <div className="grid grid-cols-4 gap-2.5 sm:gap-4 max-w-xl mx-auto w-full">

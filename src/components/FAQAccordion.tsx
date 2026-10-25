@@ -6,19 +6,19 @@ import { motion, AnimatePresence } from "framer-motion";
 const FAQS = [
   {
     q: "L'inscription à l'Inno-Week est-elle gratuite ?",
-    a: "Oui, la participation à l'ensemble des 5 ateliers de l'Inno-Week est 100% gratuite pour tous les étudiants sélectionnés par le Project Initiative Club.",
+    a: "Oui, la participation à l'ensemble des 5 ateliers de l'Inno-Week est 100% gratuite pour tous les étudiants sélectionnés par Project Initiative.",
   },
   {
-    q: "Dois-je obligatoirement être étudiant à l'USTHB pour participer ?",
-    a: "L'événement est prioritairement ouvert aux étudiants de l'USTHB (avec leur matricule), mais nous accueillons également les étudiants externes et porteurs de projet motivés (avec leur Numéro d'Identité Nationale).",
+    q: "Dois-je obligatoirement être étudiant à l'USTHB ?",
+    a: "L'événement est prioritairement ouvert aux étudiants de l'USTHB, mais on accueille également les étudiants externes et porteurs de projet motivés.",
   },
   {
     q: "Dois-je avoir une idée de projet ou une équipe avant de m'inscrire ?",
-    a: "Pas du tout ! L'atelier 01 est conçu spécifiquement pour vous aider à trouver et structurer une idée à partir de zéro, et des sessions de networking vous permettront de constituer votre équipe sur place.",
+    a: "Non, l’inscription est ouverte à tous ! InnoWeek est une série de formations conçue pour vous accompagner, quel que soit votre niveau de départ.",
   },
   {
     q: "Que gagne-t-on à la fin de l'Inno-Week ?",
-    a: "En plus des compétences pratiques délivrées par des mentors chevronnés, les meilleures équipes pitcheront devant un jury d'incubateurs lors du Demo Day et recevront un accompagnement personnalisé pour l'obtention du Label Startup.",
+    a: "En participant à InnoWeek, vous repartez avec une attestation de participation, des connaissances concrètes et directement applicables dans le monde professionnel, une vision claire sur le marché et le développement de vos projets futurs, ainsi que des échanges précieux avec des formateurs, et d'autres participants passionnés.",
   },
 ];
 

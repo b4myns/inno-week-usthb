@@ -23,38 +23,39 @@ interface FormData {
   formations: string[];
   motivation: string;
   source: string;
+  rgpdConsent: boolean;
 }
 
 const ALL_FORMATIONS = [
   {
     id: "01",
-    day: "Jour 01 • Lundi",
-    title: "01. De l'idée au modèle économique",
-    desc: "Cadrer son intuition technique et formuler une proposition de valeur monétisable.",
+    day: "Jour 01 • Dimanche",
+    title: "01. De l'idée au modèle économique / Comprendre le marché",
+    desc: "Savoir exactement à qui on vend, ce que fait la concurrence, et comment le projet va concrètement gagner de l'argent (Analyse de marché & BMC).",
   },
   {
     id: "02",
-    day: "Jour 02 • Mardi",
-    title: "02. Du lancement à la validation",
-    desc: "Construire un MVP, prototyper rapidement et réaliser des interviews clients réelles.",
+    day: "Jour 02 • Lundi",
+    title: "02. Du lancement à la validation / Lancement & Test du projet",
+    desc: "Créer rapidement une première version simple du produit (MVP), la faire tester par de vrais utilisateurs et ajuster le tir sans gaspiller d'argent.",
   },
   {
     id: "03",
-    day: "Jour 03 • Mercredi",
-    title: "03. De la rentabilité au financement",
-    desc: "Calculer son CAC, ses marges unitaires et préparer sa structure financière.",
+    day: "Jour 03 • Mardi",
+    title: "03. De la rentabilité au financement / Budget & Aides financières",
+    desc: "Calculer les dépenses et recettes pour savoir à partir de quand le projet devient rentable, et trouver des aides publiques pour se lancer.",
   },
   {
     id: "04",
-    day: "Jour 04 • Jeudi",
-    title: "04. Des ressources financières à la sécurisation du projet",
-    desc: "Label Startup en Algérie, protection des brevets INAPI et subventions ASF.",
+    day: "Jour 04 • Mercredi",
+    title: "04. Des ressources financières à la sécurisation / Investisseurs & Protection légale",
+    desc: "Trouver des investisseurs plus importants et protéger juridiquement ses idées, sa marque et l'entente entre associés.",
   },
   {
     id: "05",
-    day: "Jour 05 • Vendredi",
-    title: "05. Du pitch à la croissance & Demo Day",
-    desc: "Pitch deck format 3 min (Y-Combinator) et soutenance live devant investisseurs.",
+    day: "Jour 05 • Jeudi",
+    title: "05. Du pitch à la croissance / Réussir son Pitch",
+    desc: "Convaincre des jurys ou investisseurs en quelques minutes avec une présentation percutante, storytelling financier et négociations de pitch.",
   },
 ];
 
@@ -80,6 +81,7 @@ export default function RegisterPage() {
     formations: ALL_FORMATIONS.map((f) => f.title), // Select all by default
     motivation: "",
     source: "Instagram",
+    rgpdConsent: false,
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -146,6 +148,10 @@ export default function RegisterPage() {
       newErrors.motivation = "Veuillez partager quelques mots sur votre motivation ou votre projet.";
     } else if (formData.motivation.trim().length < 15) {
       newErrors.motivation = "Merci de développer un peu plus votre motivation (minimum 15 caractères).";
+    }
+
+    if (!formData.rgpdConsent) {
+      newErrors.rgpdConsent = "Le consentement à la collecte et au traitement des données (Loi n° 18-07) est obligatoire.";
     }
 
     setErrors(newErrors);
@@ -265,8 +271,8 @@ export default function RegisterPage() {
                   </h1>
                   <p className="text-sm text-[#606060] max-w-lg mx-auto leading-relaxed font-medium">
                     Merci <strong className="text-[#F15A23] font-bold">{formData.prenom} {formData.nom}</strong> !
-                    Votre dossier pour le bootcamp Inno-Week a bien été enregistré et transmis au comité de sélection du{" "}
-                    <strong>Project Initiative Club</strong>.
+                    Votre dossier pour le bootcamp Inno-Week a bien été enregistré et transmis au comité de sélection de{" "}
+                    <strong>Project Initiative</strong>.
                   </p>
                 </div>
 
@@ -278,7 +284,7 @@ export default function RegisterPage() {
                   </div>
 
                   <p className="text-xs sm:text-sm text-[#32303F] leading-relaxed font-medium">
-                    L&apos;équipe organisatrice du club PIC va examiner votre profil et vos motivations.
+                    L&apos;équipe organisatrice du club PI va examiner votre profil et vos motivations.
                     La décision officielle ainsi que votre convocation pour les ateliers à l&apos;USTHB vous seront envoyées directement par <strong>e-mail</strong> à :
                   </p>
 
@@ -380,6 +386,7 @@ export default function RegisterPage() {
                         formations: ALL_FORMATIONS.map((f) => f.title),
                         motivation: "",
                         source: "Instagram",
+                        rgpdConsent: false,
                       });
                     }}
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-[#F2F2F2] text-[#32303F] font-heading font-bold text-sm px-6 py-3.5 rounded-full border-[1.5px] border-[#32303F] shadow-swiss-sm transition"
@@ -404,7 +411,7 @@ export default function RegisterPage() {
             <div className="space-y-2 mb-8 pb-6 border-b border-[#32303F]/15">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F2F2F2] border border-[#32303F] text-xs font-mono font-bold text-[#F15A23]">
                 <span className="w-2 h-2 rounded-full bg-[#F15A23] animate-pulse"></span>
-                PROJECT INITIATIVE CLUB • USTHB
+                PROJECT INITIATIVE • USTHB
               </div>
               <h1 className="text-2xl sm:text-3xl font-black font-heading text-[#32303F] tracking-tight">
                 Rejoignez le Bootcamp Inno-Week
@@ -733,8 +740,41 @@ export default function RegisterPage() {
                 </div>
               </div>
 
+              {/* Clause RGPD / Protection des Données (Loi 18-07) */}
+              <div
+                className={`p-4 sm:p-5 rounded-2xl border-[1.5px] transition-all ${
+                  errors.rgpdConsent
+                    ? "bg-red-50/80 border-red-500 shadow-swiss-sm"
+                    : "bg-[#FEF9F6] border-[#32303F] shadow-swiss-sm"
+                }`}
+              >
+                <label
+                  htmlFor="rgpd-consent-checkbox"
+                  className="flex items-start gap-3 cursor-pointer select-none"
+                >
+                  <input
+                    id="rgpd-consent-checkbox"
+                    type="checkbox"
+                    checked={formData.rgpdConsent}
+                    onChange={(e) =>
+                      setFormData({ ...formData, rgpdConsent: e.target.checked })
+                    }
+                    className="mt-0.5 w-4 h-4 rounded-md accent-[#F15A23] border-[#32303F] cursor-pointer shrink-0"
+                  />
+                  <span className="text-xs sm:text-sm text-[#32303F] leading-relaxed font-medium">
+                    J’accepte que mes données personnelles soient collectées et traitées conformément à la loi n° 18-07 modifiée et complétée, pour les finalités liées à mon inscription.{" "}
+                    <span className="text-[#F15A23] font-bold">*</span>
+                  </span>
+                </label>
+                {errors.rgpdConsent && (
+                  <p className="text-xs text-red-600 mt-2 font-semibold pl-7">
+                    {errors.rgpdConsent}
+                  </p>
+                )}
+              </div>
+
               {/* Submit Button */}
-              <div className="pt-4">
+              <div className="pt-2">
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -758,7 +798,7 @@ export default function RegisterPage() {
               <div className="flex items-center justify-center gap-2 pt-2 text-xs text-[#606060] font-medium text-center">
                 <CheckCircle2 className="w-4 h-4 text-[#F15A23] shrink-0" />
                 <span>
-                  Bootcamp 100% gratuit organisé par le Project Initiative Club à l&apos;USTHB.
+                  Bootcamp 100% gratuit organisé par Project Initiative à l&apos;USTHB.
                 </span>
               </div>
             </form>

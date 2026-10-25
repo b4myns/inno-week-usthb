@@ -9,6 +9,7 @@ export interface RegisterInput {
   formations: string[];
   motivation: string;
   source: string;
+  rgpdConsent?: boolean;
 }
 
 export interface CandidateRecord extends RegisterInput {
@@ -160,6 +161,7 @@ export function validateRegisterInput(data: unknown): ValidationResult {
       formations,
       motivation,
       source,
+      rgpdConsent: raw.rgpdConsent !== undefined ? Boolean(raw.rgpdConsent) : true,
     },
   };
 }

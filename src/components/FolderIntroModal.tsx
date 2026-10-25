@@ -82,7 +82,7 @@ export default function FolderIntroModal() {
               InnoWeek_2025.zip
             </p>
             <p className="text-[10px] text-[#A83200] font-semibold">
-              Project Initiative Club • USTHB
+              Project Initiative • USTHB
             </p>
           </button>
 

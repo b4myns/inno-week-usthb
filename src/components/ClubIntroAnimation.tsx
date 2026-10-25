@@ -147,7 +147,7 @@ export default function ClubIntroAnimation() {
             {/* Top row */}
             <div className="flex justify-between items-center text-white">
               <span className="text-[9px] font-mono font-black tracking-wider">
-                PIC • USTHB
+                PI • USTHB
               </span>
               <span className="text-xs font-mono font-bold text-[#FCDF5D]">★</span>
             </div>
@@ -237,7 +237,7 @@ export default function ClubIntroAnimation() {
         >
           <div className="inline-flex items-center gap-2 bg-[#FCDF5D] border-[1.5px] border-[#32303F] px-3 py-1 rounded-full text-[10px] sm:text-xs font-mono font-black text-[#32303F] shadow-swiss-sm">
             <span className="w-2 h-2 rounded-full bg-[#F15A23] animate-pulse"></span>
-            <span>PROJECT INITIATIVE CLUB • USTHB</span>
+            <span>PROJECT INITIATIVE • USTHB</span>
           </div>
 
           <h2 className="text-xl sm:text-2xl font-black font-heading tracking-tight text-[#32303F]">

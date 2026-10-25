@@ -121,8 +121,8 @@ export default function Home() {
           {/* Floating Shape Left: FolderBadge */}
           <div className="hidden lg:block absolute -left-28 top-8 z-20">
             <FolderBadge
-              title="Édition 2026"
-              subtitle="5 Jours • 100% Gratuit"
+              title="Lancement"
+              subtitle="Dimanche 08 Novembre"
               tag="USTHB"
               rotate={-3}
             />
@@ -133,7 +133,7 @@ export default function Home() {
             <FolderBadge
               title="Parcours"
               subtitle="De l'idée au pitch"
-              tag="DEMO DAY"
+              tag="FORMATION"
               rotate={2}
             />
           </div>
@@ -198,23 +198,21 @@ export default function Home() {
           3. SECTION 01: UNIFIED "QUI SOMMES-NOUS ?" SINGLE BLOCK
           ==================================================================== */}
       <section id="qui-sommes-nous" className="max-w-[1200px] mx-auto px-6 py-20">
-        <OSWindowCard title="01 // QUI SOMMES-NOUS — PROJECT INITIATIVE CLUB">
+        <OSWindowCard title="01 // QUI SOMMES-NOUS — PROJECT INITIATIVE">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left 6 Columns: Club Story & Stats */}
             <div className="lg:col-span-6 space-y-6">
               <h2 className="text-3xl sm:text-4xl font-black text-[#32303F] tracking-tight font-heading leading-tight">
                 QUI SOMMES-NOUS ?<br />
-                <span className="text-[#F15A23]">{"//"} PROJECT INITIATIVE CLUB</span>
+                <span className="text-[#F15A23]">{"//"} PROJECT INITIATIVE</span>
               </h2>
 
               <p className="text-sm sm:text-base text-[#606060] leading-relaxed font-body">
-                Le <strong className="text-[#F15A23] font-bold">Project Initiative Club (PIC)</strong> est le premier club entrepreneurial et scientifique
-                de l&apos;Université des Sciences et de la Technologie Houari Boumediene (USTHB). Notre mission : initier les jeunes étudiants algériens au monde des affaires,
-                de l&apos;entrepreneuriat et des initiatives concrètes.
+                Nous sommes <strong className="text-[#F15A23] font-bold">Project Initiative</strong>, le premier club universitaire à caractère entrepreneurial en Algérie, rattaché à l’Université des Sciences et de la Technologie Houari Boumediene.
               </p>
 
               <p className="text-sm sm:text-base text-[#606060] leading-relaxed font-body">
-                À travers des hackathons emblématiques, des formations de pointe en technologie et gestion de projet comme l&apos;Inno-Week, ainsi que notre grand salon Career Summit, nous connectons les futurs talents au monde professionnel.
+                Depuis notre création, le 14 février 2014, notre objectif principal est d’accompagner les étudiants dans leur transition vers le domaine professionnel et entrepreneurial, en leur offrant les outils et compétences nécessaires pour concrétiser leurs ambitions.
               </p>
 
               {/* Animated Counting & Typing Stat Boxes (+200, +15, USTHB) */}
@@ -228,7 +226,7 @@ export default function Home() {
                 <div className="relative aspect-[1024/631] w-full overflow-hidden">
                   <Image
                     src="/community-pic.jpg"
-                    alt="Communauté Project Initiative Club USTHB"
+                    alt="Communauté Project Initiative USTHB"
                     fill
                     priority
                     className="object-cover"
@@ -241,7 +239,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">
                 <div className="flex items-center gap-2 text-xs font-heading font-bold text-[#606060]">
                   <span className="w-2 h-2 rounded-full bg-[#F15A23]"></span>
-                  <span>COMMUNAUTÉ PIC • AUDITORIUM USTHB</span>
+                  <span>COMMUNAUTÉ PI • AUDITORIUM USTHB</span>
                 </div>
 
                 {/* 4 Pillars Pill Bar cleanly positioned below */}
@@ -280,7 +278,7 @@ export default function Home() {
               L&apos;ARBRE DES 5 ATELIERS
             </h2>
             <p className="text-xs sm:text-sm text-[#606060] mt-2 max-w-xl font-medium">
-              Une progression ergonomique et aérée étape par étape. Chaque atelier produit un livrable concret pour emmener votre idée scientifique ou tech jusqu&apos;au Demo Day.
+              Une progression ergonomique et aérée étape par étape. Chaque atelier produit un livrable concret pour emmener votre projet de l&apos;idée jusqu&apos;à l&apos;art du pitch et de la négociation.
             </p>
           </div>
           <div className="bg-[#FFFFFF] border-[1.5px] border-[#32303F] px-4 py-2 rounded-full text-xs font-heading font-bold text-[#32303F] shadow-swiss-sm shrink-0">
@@ -390,7 +388,7 @@ export default function Home() {
 
         {/* Bottom Line */}
         <div className="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-[#606060] font-heading font-bold gap-2 select-none">
-          <div>© 2026 Project Initiative Club • USTHB</div>
+          <div>© 2026 Project Initiative • USTHB</div>
           <div>Inspiration • Innovation • Impact</div>
         </div>
       </footer>

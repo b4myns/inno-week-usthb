@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "INNO-WEEK 2026 • USTHB | Project Initiative Club",
-  description: "Bootcamp d'innovation technologique et entrepreneuriat à l'USTHB organisé par le Project Initiative Club.",
+  title: "INNO-WEEK 2026 • USTHB | Project Initiative",
+  description: "Série de formations pratiques et entrepreneuriat à l'USTHB organisée par Project Initiative.",
 };
 
 export default function RootLayout({

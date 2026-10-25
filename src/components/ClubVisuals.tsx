@@ -21,12 +21,12 @@ export function DualBrandLogos({
 
   return (
     <div className={`flex items-center gap-3 select-none ${className}`}>
-      {/* PIC Club Logo */}
+      {/* PI Club Logo */}
       <Link href="/" className="flex items-center group">
         <div className={`relative ${picHeight} w-auto flex items-center justify-center transition-transform group-hover:scale-105`}>
           <Image
             src="/logo-pic-tight.png"
-            alt="Project Initiative Club"
+            alt="Project Initiative"
             width={160}
             height={60}
             className={`${picHeight} w-auto object-contain`}

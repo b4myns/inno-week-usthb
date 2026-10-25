@@ -10,7 +10,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2">
             <span className="bg-[#B83A0A] text-white text-xs font-black tracking-wider px-2 py-1 rounded-sm shadow-xs">
-              PIC
+              PI
             </span>
             <span className="font-extrabold text-sm sm:text-base tracking-tight text-[#1C1917]">
               INNO-WEEK
