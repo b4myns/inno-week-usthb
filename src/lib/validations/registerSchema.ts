@@ -143,6 +143,11 @@ export function validateRegisterInput(data: unknown): ValidationResult {
   // 8. Source
   const source = sanitizeText(String(raw.source || "Autre"));
 
+  // 9. Consentement RGPD / Loi 18-07
+  if (raw.rgpdConsent === false || (raw.rgpdConsent !== undefined && !Boolean(raw.rgpdConsent))) {
+    errors.rgpdConsent = "Le consentement au traitement des données personnelles (Loi n° 18-07) est obligatoire.";
+  }
+
   if (Object.keys(errors).length > 0) {
     return { valid: false, errors };
   }
