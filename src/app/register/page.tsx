@@ -78,7 +78,7 @@ export default function RegisterPage() {
     isUsthbStudent: true,
     matricule: "",
     nin: "",
-    formations: ALL_FORMATIONS.map((f) => f.title), // Select all by default
+    formations: [], // Not selected by default
     motivation: "",
     source: "Instagram",
     rgpdConsent: false,
@@ -383,7 +383,7 @@ export default function RegisterPage() {
                         isUsthbStudent: true,
                         matricule: "",
                         nin: "",
-                        formations: ALL_FORMATIONS.map((f) => f.title),
+                        formations: [],
                         motivation: "",
                         source: "Instagram",
                         rgpdConsent: false,
