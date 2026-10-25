@@ -18,6 +18,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import MetricsCards from "@/components/MetricsCards";
 import ProgramTree from "@/components/ProgramTree";
 import ClubIntroAnimation from "@/components/ClubIntroAnimation";
+import CommunityPhotoSlider from "@/components/CommunityPhotoSlider";
 import { MapPin, Calendar, ArrowUpRight } from "lucide-react";
 
 export default function Home() {
@@ -219,45 +220,9 @@ export default function Home() {
               <MetricsCards />
             </div>
 
-            {/* Right 6 Columns: Community Photo Framed Cleanly & Uncluttered */}
-            <div className="lg:col-span-6 space-y-4">
-              <div className="relative rounded-2xl overflow-hidden border-[1.5px] border-[#32303F] shadow-swiss bg-[#32303F]">
-                {/* Native aspect ratio matching exact dimensions 1024x631 */}
-                <div className="relative aspect-[1024/631] w-full overflow-hidden">
-                  <Image
-                    src="/community-pic.jpg"
-                    alt="Communauté Project Initiative USTHB"
-                    fill
-                    priority
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 600px"
-                  />
-                </div>
-              </div>
-
-              {/* Clean Legend & 4 Pillars below the photo */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">
-                <div className="flex items-center gap-2 text-xs font-heading font-bold text-[#606060]">
-                  <span className="w-2 h-2 rounded-full bg-[#F15A23]"></span>
-                  <span>COMMUNAUTÉ PI • AUDITORIUM USTHB</span>
-                </div>
-
-                {/* 4 Pillars Pill Bar cleanly positioned below */}
-                <div className="inline-flex items-center gap-1.5 bg-[#FFFFFF] border-[1.5px] border-[#32303F] rounded-full px-3 py-1 shadow-swiss-sm select-none">
-                  <span className="bg-[#FCDF5D] text-[#32303F] text-[10px] font-heading font-black px-2.5 py-0.5 rounded-full border border-[#32303F]">
-                    LEARN
-                  </span>
-                  <span className="bg-[#F2F2F2] text-[#32303F] text-[10px] font-heading font-black px-2.5 py-0.5 rounded-full border border-[#32303F]">
-                    CONNECT
-                  </span>
-                  <span className="bg-[#F15A23] text-white text-[10px] font-heading font-black px-2.5 py-0.5 rounded-full border border-[#32303F]">
-                    CREATE
-                  </span>
-                  <span className="bg-[#10459A] text-white text-[10px] font-heading font-black px-2.5 py-0.5 rounded-full border border-[#32303F]">
-                    GROW
-                  </span>
-                </div>
-              </div>
+            {/* Right 6 Columns: Interactive Community Photo Slider with Smooth Slide Animation */}
+            <div className="lg:col-span-6">
+              <CommunityPhotoSlider />
             </div>
           </div>
         </OSWindowCard>
