@@ -119,6 +119,9 @@ export default function ClubIntroAnimation() {
               <div className="text-[8px] font-mono text-[#606060] font-semibold">
                 ★ 5 JOURS • 5 ATELIERS
               </div>
+              <div className="text-[7.5px] font-mono font-bold text-[#F15A23] uppercase tracking-tight">
+                Sponsorisé par Renoh DZ
+              </div>
             </div>
 
             {/* Progress Bars */}
@@ -233,7 +236,7 @@ export default function ClubIntroAnimation() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="space-y-1.5"
+          className="space-y-2 flex flex-col items-center"
         >
           <div className="inline-flex items-center gap-2 bg-[#FCDF5D] border-[1.5px] border-[#32303F] px-3 py-1 rounded-full text-[10px] sm:text-xs font-mono font-black text-[#32303F] shadow-swiss-sm">
             <span className="w-2 h-2 rounded-full bg-[#F15A23] animate-pulse"></span>
@@ -243,6 +246,12 @@ export default function ClubIntroAnimation() {
           <h2 className="text-xl sm:text-2xl font-black font-heading tracking-tight text-[#32303F]">
             Ouverture du dossier Inno-Week
           </h2>
+
+          <div className="inline-flex items-center gap-1.5 bg-white/95 border-[1.5px] border-[#32303F] px-3 py-1 rounded-full text-[10px] sm:text-xs font-heading font-bold text-[#32303F] shadow-swiss-sm">
+            <span className="text-[#F15A23]">★</span>
+            <span>Sponsorisé par</span>
+            <span className="font-black text-[#F15A23]">Renoh DZ</span>
+          </div>
 
           <p className="text-[11px] font-mono text-[#606060]">
             Touchez l&apos;écran pour accéder directement
