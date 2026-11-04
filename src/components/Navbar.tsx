@@ -17,8 +17,22 @@ export default function Navbar() {
             </span>
           </Link>
           <span className="hidden sm:inline-block text-[11px] font-mono uppercase bg-[#ECE4D5] text-[#78716C] px-2 py-0.5 rounded-full border border-[#DED3BF]">
-            CENTRE BAB EZZOUAR
+            BLOC DES MASTER USTHB
           </span>
+          <a
+            href="https://renohdz.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 hover:opacity-85 transition"
+            title="Renoh Tech"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/renoh-dz-logo-tight.png"
+              alt="Renoh Tech"
+              className="h-6 w-auto object-contain"
+            />
+          </a>
         </div>
 
         {/* Right: Navigation Links */}

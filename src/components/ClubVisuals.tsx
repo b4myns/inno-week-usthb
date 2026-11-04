@@ -12,15 +12,18 @@ import { motion } from "framer-motion";
 export function DualBrandLogos({
   className = "",
   size = "md",
+  showRenoh = true,
 }: {
   className?: string;
   size?: "sm" | "md" | "lg";
+  showRenoh?: boolean;
 }) {
   const picHeight = size === "lg" ? "h-11 sm:h-12" : size === "sm" ? "h-7" : "h-9";
   const innoHeight = size === "lg" ? "h-10 sm:h-11" : size === "sm" ? "h-6 sm:h-7" : "h-8";
+  const renohHeight = size === "lg" ? "h-8 sm:h-9" : size === "sm" ? "h-5" : "h-6 sm:h-7";
 
   return (
-    <div className={`flex items-center gap-3 select-none ${className}`}>
+    <div className={`flex items-center gap-2 sm:gap-3 select-none ${className}`}>
       {/* PI Club Logo */}
       <Link href="/" className="flex items-center group">
         <div className={`relative ${picHeight} w-auto flex items-center justify-center transition-transform group-hover:scale-105`}>
@@ -36,7 +39,7 @@ export function DualBrandLogos({
       </Link>
 
       {/* Vertical Swiss Divider */}
-      <span className="h-6 w-[1.5px] bg-[#32303F]/25 mx-1 hidden sm:block"></span>
+      <span className="h-6 w-[1.5px] bg-[#32303F]/25 mx-0.5 sm:mx-1 hidden sm:block"></span>
 
       {/* Inno-Week Event Logo */}
       <Link href="/" className="hidden sm:flex items-center gap-2 group">
@@ -54,6 +57,34 @@ export function DualBrandLogos({
           2026
         </span>
       </Link>
+
+      {/* Renoh Tech Sponsor Logo */}
+      {showRenoh && (
+        <>
+          <span className="h-6 w-[1.5px] bg-[#32303F]/25 mx-0.5 sm:mx-1 hidden sm:block"></span>
+          <a
+            href="https://renohdz.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 group hover:opacity-85 transition-opacity"
+            title="Renoh Tech — Sponsor Officiel Inno-Week"
+          >
+            <div className={`relative ${renohHeight} w-auto flex items-center justify-center transition-transform group-hover:scale-105`}>
+              <Image
+                src="/renoh-dz-logo-tight.png"
+                alt="Renoh Tech"
+                width={120}
+                height={38}
+                className={`${renohHeight} w-auto object-contain`}
+                priority
+              />
+            </div>
+            <span className="hidden xl:inline-block bg-[#FCDF5D] text-[#32303F] text-[8px] font-mono font-bold px-1.5 py-0.5 rounded-full border border-[#32303F] shadow-xs">
+              SPONSOR
+            </span>
+          </a>
+        </>
+      )}
     </div>
   );
 }

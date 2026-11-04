@@ -131,7 +131,7 @@ export default function Home() {
             <FolderBadge
               title="Lancement"
               subtitle="Dimanche 08 Novembre"
-              tag="USTHB"
+              tag="BLOC DES MASTER"
               rotate={-3}
             />
           </div>
@@ -313,13 +313,13 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-[#32303F]/15">
           {/* Column 1: Brand & Description */}
           <div className="space-y-3">
-            <DualBrandLogos />
+            <DualBrandLogos showRenoh={false} />
             <p className="text-xs text-[#606060] leading-relaxed">
               L&apos;accélérateur d&apos;innovation étudiante et d&apos;entrepreneuriat technologique de l&apos;Université des Sciences et de la Technologie Houari Boumediene.
             </p>
             <div className="inline-flex items-center gap-1.5 text-xs font-heading font-bold text-[#32303F] bg-white px-3 py-1 rounded-full border border-[#32303F]">
               <MapPin className="w-3.5 h-3.5 text-[#F15A23]" />
-              <span>USTHB Bab Ezzouar, Alger</span>
+              <span>Bloc des Master USTHB • Bab Ezzouar</span>
             </div>
           </div>
 

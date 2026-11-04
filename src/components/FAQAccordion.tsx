@@ -5,6 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const FAQS = [
   {
+    q: "Où se déroule l'événement ?",
+    a: "Tous les ateliers et sessions de l'Inno-Week se déroulent dans le Bloc des Master USTHB (Bab Ezzouar, Alger).",
+  },
+  {
     q: "L'inscription à l'Inno-Week est-elle gratuite ?",
     a: "Oui, la participation à l'ensemble des 5 ateliers de l'Inno-Week est 100% gratuite pour tous les étudiants sélectionnés par Project Initiative.",
   },

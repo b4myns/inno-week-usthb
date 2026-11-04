@@ -29,33 +29,33 @@ interface FormData {
 const ALL_FORMATIONS = [
   {
     id: "01",
-    day: "Jour 01 • Dimanche",
-    title: "01. De l'idée au modèle économique / Comprendre le marché",
-    desc: "Savoir exactement à qui on vend, ce que fait la concurrence, et comment le projet va concrètement gagner de l'argent (Analyse de marché & BMC).",
+    day: "Jour 01 • Dimanche 08/11 (Toute la journée)",
+    title: "01. Stratégie et positionnement des projets — Islem Chellali",
+    desc: "Clarifier la vision stratégique, définir une proposition de valeur distinctive et positionner son projet de manière compétitive (Lieu : Bloc des Master USTHB).",
   },
   {
     id: "02",
-    day: "Jour 02 • Lundi",
-    title: "02. Du lancement à la validation / Lancement & Test du projet",
-    desc: "Créer rapidement une première version simple du produit (MVP), la faire tester par de vrais utilisateurs et ajuster le tir sans gaspiller d'argent.",
+    day: "Jour 02 • Lundi 09/11 (Toute la journée)",
+    title: "02. Planification stratégique et pilotage de projet — Mohamed Yakoubi",
+    desc: "Structurer la feuille de route opérationnelle, maîtriser les outils de pilotage de projet et exécuter avec agilité (Lieu : Bloc des Master USTHB).",
   },
   {
     id: "03",
-    day: "Jour 03 • Mardi",
-    title: "03. De la rentabilité au financement / Budget & Aides financières",
-    desc: "Calculer les dépenses et recettes pour savoir à partir de quand le projet devient rentable, et trouver des aides publiques pour se lancer.",
+    day: "Jour 03 • Mardi 10/11 (Demi-journée)",
+    title: "03. Ingénierie financière et rentabilité des projets — Billel Moula",
+    desc: "Modélisation financière prévisionnelle, rentabilité, structure des coûts et leviers d'aides et financements (Lieu : Bloc des Master USTHB).",
   },
   {
     id: "04",
-    day: "Jour 04 • Mercredi",
-    title: "04. Des ressources financières à la sécurisation / Investisseurs & Protection légale",
-    desc: "Trouver des investisseurs plus importants et protéger juridiquement ses idées, sa marque et l'entente entre associés.",
+    day: "Jour 04 • Mercredi 11/11 (Demi-journée)",
+    title: "04. Stratégies commerciale et développement des marchés — Abdelmalek Chetta",
+    desc: "Techniques de prospection, Go-To-Market, acquisition clients et pénétration stratégique des marchés (Lieu : Bloc des Master USTHB).",
   },
   {
     id: "05",
-    day: "Jour 05 • Jeudi",
-    title: "05. Du pitch à la croissance / Réussir son Pitch",
-    desc: "Convaincre des jurys ou investisseurs en quelques minutes avec une présentation percutante, storytelling financier et négociations de pitch.",
+    day: "Jour 05 • Jeudi 12/11 (Demi-journée)",
+    title: "05. Croissance stratégique et pérennisation des projets — Hicham Gaoua",
+    desc: "Mise à l'échelle durable, pérennisation des structures, levée de fonds et pitch devant jury (Lieu : Bloc des Master USTHB).",
   },
 ];
 
@@ -285,7 +285,7 @@ export default function RegisterPage() {
 
                   <p className="text-xs sm:text-sm text-[#32303F] leading-relaxed font-medium">
                     L&apos;équipe organisatrice du club PI va examiner votre profil et vos motivations.
-                    La décision officielle ainsi que votre convocation pour les ateliers à l&apos;USTHB vous seront envoyées directement par <strong>e-mail</strong> à :
+                    La décision officielle ainsi que votre convocation pour les ateliers au Bloc des Master USTHB vous seront envoyées directement par <strong>e-mail</strong> à :
                   </p>
 
                   <div className="inline-flex items-center gap-2 bg-[#FEF9F6] border border-[#32303F] rounded-xl px-3.5 py-2 text-xs font-mono font-bold text-[#10459A]">
