@@ -30,8 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files (keep all sensitive env files private)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -40,5 +41,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local candidate registration data
+# local candidate registration data (protect personal student data)
+/data/*.json
 /data/registrations.json
+!data/.gitkeep
